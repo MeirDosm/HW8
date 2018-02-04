@@ -1,0 +1,318 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+using namespace std;
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+double ShiftRight3(double *A, double *B, double *C);
+double ShiftLeft3(double *A, double *B, double *C);
+int IsLeapYear(int year);
+int MonthDays(int month, int year);
+void PrevDate(int day, int month, int year);
+void NextDate(int day, int month, int year);
+double f(double x, double y);
+double f(double x1, double y1, double x2, double y2);
+int f(int m2, int m1, int m0);
+
+int main(int argc, char** argv) {
+	int task_num;
+	cout << "Vvedite nomer zadaniya: " << endl;
+	cin >> task_num;
+    
+	if(task_num == 1)
+	{
+		double A1, B1, C1, A2, B2, C2;
+	    int i;
+	
+	
+	    cout << "Vvedite veshestvennye chisla A1, B1, C1: " << endl;
+	    cin >> A1;
+	    cin >> B1;
+	    cin >> C1;
+	    ShiftRight3(&A1, &B1, &C1);
+	    cout << "Posle pravogo ciklicheskogo sdviga: " << endl;
+	    cout << A1 << endl;
+	    cout << B1 << endl;
+	    cout << C1 << endl;
+	    cout << "Vvedite veshestvennye chisla A2, B2, C2: " << endl;
+	    cin >> A2;
+	    cin >> B2;
+	    cin >> C2;
+	    ShiftRight3(&A2, &B2, &C2);
+	    cout << "Posle pravogo ciklicheskogo sdviga: " << endl;
+	    cout << A2 << endl;
+	    cout << B2 << endl;
+	    cout << C2 << endl;
+	
+    }
+    else if (task_num == 2)
+    {
+    	double A1, B1, C1, A2, B2, C2;
+	    int i;
+
+	    cout << "Vvedite veshestvennye chisla A1, B1, C1: " << endl;
+	    cin >> A1;
+	    cin >> B1;
+	    cin >> C1;
+	    ShiftLeft3(&A1, &B1, &C1);
+	    cout << "Posle levogo ciklicheskogo sdviga: " << endl;
+	    cout << A1 << endl;
+	    cout << B1 << endl;
+	    cout << C1 << endl;
+	    cout << "Vvedite veshestvennye chisla A2, B2, C2: " << endl;
+	    cin >> A2;
+	    cin >> B2;
+	    cin >> C2;
+	    ShiftLeft3(&A2, &B2, &C2);
+	    cout << "Posle levogo ciklicheskogo sdviga: " << endl;
+	    cout << A2 << endl;
+	    cout << B2 << endl;
+	    cout << C2 << endl;	
+	
+	}
+	else if (task_num == 3)
+	{
+		int i;
+	    int year;
+        for(i=0;i<5;i++)
+        {
+    	    cout << "Vvedite god: " << endl;
+    	    cin >> year;
+	        if(IsLeapYear(year)) {
+                cout << year << " - visokosnyi god. " << endl;
+            } else {
+                cout << year << " - nevisokosnyi god. " << endl;
+            }
+	    }
+	}
+	else if (task_num == 4)
+	{
+		int year, month;
+	    int i;
+	
+	    cout << "Vvedite god: " << endl;
+	    cin >> year;
+	    for(i=0;i<3;i++)
+	    {
+	    	cout << "Vvedite mesyac: " << endl;
+	    	cin >> month;
+	    	cout << "V dannom mesyace: " << MonthDays(month, year) << " dnya(dnei)." << endl;
+	    }
+	}
+	else if (task_num == 5)
+	{
+			int day, year, month;
+	        int i;
+	
+	
+	
+	        for(i=0;i<3;i++)
+	        {
+		        cout << "Vvedite datu (den'): " << endl;
+		        cin >> day;
+		        cout << "Vvedite mesyac: " << endl;		
+		        cin >> month;
+		        cout << "Vvedite god: " << endl;
+		        cin >> year;
+		        PrevDate(day, month, year);
+		        cout << endl;
+	        }
+	}
+	else if (task_num == 6)
+	{
+		int day, year, month;
+	    int i;
+	
+	
+	
+	    for(i=0;i<3;i++)
+	    {
+		    cout << "Vvedite datu (den'): " << endl;
+		    cin >> day;
+		    cout << "Vvedite mesyac: " << endl;		
+		    cin >> month;
+		    cout << "Vvedite god: " << endl;
+		    cin >> year;
+		    NextDate(day, month, year);
+		    cout << endl;
+	    }
+	}
+	else if (task_num == 7)
+	{
+		double x, y;
+	
+	    cout << "Vvedite dlinu dvuh katetov pryamougol'nogo treugol'nika v cm: " << endl;
+	    cin >> x;
+	    cin >> y;
+	    cout << "Dlina gipotenuzy ravna: " << f(x, y) << endl;
+	}
+	else if (task_num == 8)
+	{
+		double x1, y1, x2, y2;
+	
+	    cout << "Vvedite koordinaty 1 tochki x1, y1: " << endl;
+	    cin >> x1;
+	    cin >> y1;
+	    cout << "Vvedite koordinaty 2 tochki x2, y2: " << endl;
+	    cin >> x2;
+	    cin >> y2;
+	    cout << "Rasstoyanie mezhdu dvumya tochkami ravno: " << f(x1, y1, x2, y2) << endl;
+	}
+	else if (task_num == 9)
+	{
+		int m2, m1, m0;
+	
+	    cout << "Vvedite chislo soten, desyatkov i edinic chisla: " << endl;
+	    cin >> m2;
+	    cin >> m1;
+    	cin >> m0;
+	    cout << "Dannoe chislo: " << f(m2, m1, m0) << endl;
+	}
+    return 0;
+}
+
+
+double ShiftRight3(double *A, double *B, double *C)
+{
+	double temp;
+	
+	temp = *C;
+	*C = *B;
+	*B = *A;
+	*A = temp;
+}
+
+double ShiftLeft3(double *A, double *B, double *C)
+{
+	double temp;
+	
+	temp = *A;
+	*A = *B;
+	*B = *C;
+	*C = temp;
+}
+
+
+int IsLeapYear(int year)
+{   
+    if (year % 400 == 0)
+	    return 1;
+	else if (year % 100 == 0)
+	    return 0;
+	else if (year % 4 == 0)
+	    return 1;
+    else
+		return 0;	
+}
+
+int MonthDays(int month, int year)
+{
+	if((month==1)||(month==3)||(month==5)||(month==7)||(month==8)||(month==10)||(month==12))
+	    return 31;
+	if((month==4)||(month==6)||(month==9)||(month==11))
+	    return 30;
+	if(month==2)
+	{
+		if (IsLeapYear(year))
+		    return 29;
+		else
+		    return 28;
+	}		
+	
+}
+
+
+void PrevDate(int day, int month, int year)
+{
+	if (day == 1)
+	{
+		if (month == 1)
+		{
+			year = year - 1;
+			month = 12;
+			day = MonthDays(month, year);
+		}
+		else 
+		{
+			month = month - 1;
+			day = MonthDays(month, year);
+		}
+	}
+	else
+	{
+		day = day - 1;
+	}
+
+	cout << "Predydushii den': "
+		<< day <<"." << month << "." << year << endl;
+}
+
+void NextDate(int day, int month, int year)
+{
+	if (day == 31)
+	{
+		if (month == 12)
+		{
+			year = year + 1;
+			month = 1;
+			day = 1;
+		}
+		else if ((month == 1)||(month==3)||(month==5)||(month==7)||(month==8)||(month==10))
+		{
+			month = month + 1;
+			day = 1;
+		}
+	}
+	else if ((day==30)&&((month==4)||(month==6)||(month==9)||(month==11)))
+	{
+		month=month+1;
+		day=1;
+	}
+	else if ((day==28)&&(month==2))
+	{
+		if(IsLeapYear(year))
+		{
+			day=29;
+		}
+		else
+		{
+			month=3;
+			day=1;
+		}
+	}
+	else if ((day==29)&&(month==2)&&(IsLeapYear(year)))
+	{
+		month=3;
+		day=1;
+	}
+	else
+	{
+		day=day+1;
+	}
+
+	cout << "Sleduushii den': "
+		<< day <<"." << month << "." << year << endl;
+}
+
+double f(double x, double y)
+{
+	double z;
+	z=sqrt(pow(x,2)+pow(y,2));
+	return z;
+}
+
+double f(double x1, double y1, double x2, double y2)
+{
+	double r;
+	r=sqrt(pow((x2-x1),2)+pow((y2-y1),2));
+	return r;
+}
+
+int f(int m2, int m1, int m0)
+{
+	int N;
+	N=((m2*100)+(m1*10)+(m0*1));
+	return N;
+}
